@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>純潛水工作室</title>
-    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     
     <!-- LINE Seed TW 字體 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/max32002/line-seed@1.0.1/webfont/line-seed-tw.css">
@@ -48,143 +48,7 @@
             margin: 0 auto;
             position: relative;
         }
-
-        .edit-btn {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid #0ea5e9;  
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            color: #0ea5e9;  
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .edit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-            background: white;
-        }
-
-        .edit-panel {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 2000;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .edit-panel.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .edit-content {
-            background: white;
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .edit-content h2 {
-            color: #0ea5e9;  
-            margin-bottom: 25px;
-            font-size: 26px;
-            border-bottom: 3px solid #0284c7;  
-            padding-bottom: 10px;
-        }
-
-        .edit-group {
-            margin-bottom: 20px;
-        }
-
-        .edit-group label {
-            display: block;
-            color: #334155;
-            font-weight: bold;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        .edit-group input,
-        .edit-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #7dd3fc;  
-            border-radius: 10px;
-            font-size: 14px;
-            font-family: inherit;
-            transition: border-color 0.3s ease;
-        }
-
-        .edit-group input:focus,
-        .edit-group textarea:focus {
-            outline: none;
-            border-color: #0ea5e9;  
-        }
-
-        .edit-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .edit-group small {
-            display: block;
-            color: #64748b;
-            margin-top: 5px;
-            font-size: 12px;
-        }
-
-        .edit-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 30px;
-        }
-
-        .edit-buttons button {
-            flex: 1;
-            padding: 14px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .save-btn {
-            background: #0284c7;  
-            color: white;
-        }
-
-        .save-btn:hover {
-            background: #0ea5e9;  
-            transform: translateY(-2px);
-        }
-
-        .cancel-btn {
-            background: #7dd3fc;  
-            color: #0ea5e9;  
-        }
-
-        .cancel-btn:hover {
-            background: #0ea5e9;  
-        }
-
-        .header {
+.header {
             background: rgba(255, 255, 255, 0.97);
             padding: 35px 25px;
             border-radius: 20px;
@@ -372,11 +236,7 @@
             .tab-content h2 {
                 font-size: 22px;
             }
-
-            .edit-content {
-                padding: 20px;
-            }
-        }
+}
 
         .footer {
             text-align: center;
@@ -389,44 +249,7 @@
 </head>
 <body>
     <div class="container">
-        <button class="edit-btn" onclick="openEditPanel()">✏️ 編輯內容</button>
-
-        <div class="edit-panel" id="editPanel">
-            <div class="edit-content">
-                <h2>📝 編輯網站內容</h2>
-                
-                <div class="edit-group">
-                    <label>工作室名稱</label>
-                    <input type="text" id="edit-title" placeholder="例：純潛水工作室">
-                </div>
-
-                <div class="edit-group">
-                    <label>副標題（服務項目）</label>
-                    <input type="text" id="edit-subtitle" placeholder="例：專業潛水教學 | 自由潛水 | 水肺潛水">
-                </div>
-
-                <div class="edit-group">
-                    <label>歡迎語</label>
-                    <input type="text" id="edit-welcome" placeholder="例：歡迎來到純潛水的世界">
-                </div>
-
-                <div class="edit-group">
-                    <label>介紹文字</label>
-                    <textarea id="edit-intro" placeholder="介紹你的工作室，讓客戶更了解你的服務..."></textarea>
-                </div>
-
-                <div class="edit-group">
-                    <label>LIFF ID（選填）</label>
-                    <input type="text" id="edit-liff-id" placeholder="例：1234567890-abcdefgh">
-                    <small>在 LINE Developers Console 取得的 LIFF ID</small>
-                </div>
-
-                <div class="edit-buttons">
-                    <button class="save-btn" onclick="saveContent()">💾 儲存</button>
-                    <button class="cancel-btn" onclick="closeEditPanel()">❌ 取消</button>
-                </div>
-            </div>
-        </div>
+</div>
 
         <div class="header">
             <h1 id="main-title">純潛水工作室</h1>
@@ -693,66 +516,23 @@
     </div>
 
     <script>
-        let liffId = localStorage.getItem('liffId') || '';
-        
-        if (liffId) {
-            liff.init({ liffId: liffId })
-                .then(() => {
-                    console.log('LIFF 初始化成功');
-                    if (!liff.isLoggedIn()) {
-                        liff.login();
-                    }
-                })
-                .catch((err) => {
-                    console.log('LIFF 初始化失敗', err);
-                });
-        }
+        // LIFF 設定
+        const liffId = '2009152999-QqN9hMoz';
+        const liffUrl = 'https://liff.line.me/2009152999-QqN9hMoz';
 
-        function loadContent() {
-            const savedTitle = localStorage.getItem('siteTitle');
-            const savedSubtitle = localStorage.getItem('siteSubtitle');
-            const savedWelcome = localStorage.getItem('siteWelcome');
-            const savedIntro = localStorage.getItem('siteIntro');
-            
-            if (savedTitle) document.getElementById('main-title').textContent = savedTitle;
-            if (savedSubtitle) document.getElementById('main-subtitle').textContent = savedSubtitle;
-            if (savedWelcome) document.getElementById('main-welcome').textContent = savedWelcome;
-            if (savedIntro) document.getElementById('main-intro').textContent = savedIntro;
-        }
-
-        function openEditPanel() {
-            document.getElementById('editPanel').classList.add('active');
-            document.getElementById('edit-title').value = localStorage.getItem('siteTitle') || '純潛水工作室';
-            document.getElementById('edit-subtitle').value = localStorage.getItem('siteSubtitle') || '專業潛水教學 | 自由潛水 | 水肺潛水';
-            document.getElementById('edit-welcome').value = localStorage.getItem('siteWelcome') || '🌊 歡迎來到純潛水的世界 🌊';
-            document.getElementById('edit-intro').value = localStorage.getItem('siteIntro') || '我們提供最專業的潛水教學服務，無論你是初學者或進階潛水員，都能在這裡找到適合的課程。讓我們一起探索美麗的海洋世界！';
-            document.getElementById('edit-liff-id').value = localStorage.getItem('liffId') || '';
-        }
-
-        function closeEditPanel() {
-            document.getElementById('editPanel').classList.remove('active');
-        }
-
-        function saveContent() {
-            const title = document.getElementById('edit-title').value;
-            const subtitle = document.getElementById('edit-subtitle').value;
-            const welcome = document.getElementById('edit-welcome').value;
-            const intro = document.getElementById('edit-intro').value;
-            const liffIdInput = document.getElementById('edit-liff-id').value;
-            
-            localStorage.setItem('siteTitle', title);
-            localStorage.setItem('siteSubtitle', subtitle);
-            localStorage.setItem('siteWelcome', welcome);
-            localStorage.setItem('siteIntro', intro);
-            
-            if (liffIdInput) {
-                localStorage.setItem('liffId', liffIdInput);
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof liff !== 'undefined') {
+                liff.init({ liffId: liffId })
+                    .then(() => {
+                        console.log('LIFF 初始化成功');
+                    })
+                    .catch((err) => {
+                        console.log('LIFF 初始化失敗', err);
+                    });
+            } else {
+                console.log('LIFF SDK 未載入，以一般網頁模式運行');
             }
-            
-            loadContent();
-            closeEditPanel();
-            alert('✅ 內容已儲存成功！');
-        }
+        });
 
         function showTab(tabId) {
             const tabs = document.querySelectorAll('.tab-content');
@@ -764,8 +544,6 @@
             document.getElementById(tabId).classList.add('active');
             event.target.classList.add('active');
         }
-
-        window.addEventListener('load', loadContent);
     </script>
 </body>
 </html>
